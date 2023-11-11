@@ -10,17 +10,13 @@ document.querySelector('form.cocktailSearchInput').addEventListener('submit', fu
     runCocktailSearch();
 });
 
-// var basicAPI = 'https://www.thecocktaildb.com/api/json/v1/1/search.php';
-// var searchParam = 'vodka'; 
-// var url = '${basicAPI}?s=${searchParam}';
-
-// function runCocktailSearch () {
-// fetch(url)
-//     .then((response) => {
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     return response.json();
-//   });
-  
-// }
+function runCocktailSearch () {
+    var searchParam = AlcoholInputEl.value; 
+    var url = 'www.thecocktaildb.com/api/json/v1/1/search.php?s=' + searchParam;
+    
+    console.log(url)
+    fetch(url)
+        .then(function (response) {
+           console.log(response);
+          });
+    }
