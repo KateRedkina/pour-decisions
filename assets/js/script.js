@@ -12,7 +12,7 @@ document.querySelector('form.cocktailSearchInput').addEventListener('submit', fu
 
 function runCocktailSearch () {
     var searchParam = AlcoholInputEl.value; 
-    var url = 'www.thecocktaildb.com/api/json/v1/1/search.php?s=' + searchParam;
+    var url = 'www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita';
     
     console.log(url)
     fetch(url)
