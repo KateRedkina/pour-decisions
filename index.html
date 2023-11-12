@@ -12,6 +12,7 @@
   <style>
     .backgroundColor {
       background-color: #BEE9E8;
+      
     }
     .sectionColor {
       background-color: #62B6CB;
@@ -23,11 +24,14 @@
       border: none;
       padding: 5px;
       margin: 5px;
-      display: block;
+      float: left;
+      height: fit-content;
     }
     .title {
       background-color:#1B4965;
       color:#CAE9FF;
+      border: 10px;
+      margin: 5px;
     }
     .linkText {
       color:#5FA8D3;
@@ -39,36 +43,41 @@
 
     h1 {
       font-size: 25px;
+      display: block;
     }
     h2 {
       font-size: 15px;
       text-align: center;
+      display: block;
     }
     .stylesec {
       padding:10px;
+      border: 10px;
       margin: 5px;
     }
   </style>
 </head>
 
 <body class="backgroundColor box">
-  <div class="tile is-ancestor stylesec">
+  <div class="tile is-ancestor">
     <div class="randomBeer tile is-8 sectionColor stylesec">
       <h2>Random Beer</h2>
     </div>
     <div class="title tile is-4 stylesec">
-      <img src="assets/js/images/martini.png" style="height: 100px;width:100px">
-      <h1 style="display:block;">Pour Decisions</h1>
+      <img src="assets/js/images/martini.png" style="height: 100px;width:100px float: left;">
+      <div class="tile is-3">
+      <h1 style="float:right; display:block;">Pour Decisions</h1>
       <br>
-      <h2 style="display:block;">A Spirited Catalog of Cocktails and Beers</h2>
+      <h2 style="float:right; display:block;">A Spirited Catalog of Cocktails and Beers</h2>
+    </div>
     </div>
   </div>
     <div class="bottom tile is-ancestor">
       <div class="is-vertical tile is-4">
         <div class="cocktailSearch tile sectionColor stylesec">
-          <h2 class="" style="display:block;">Cocktail Search</h2>
+          <h2>Cocktail Search</h2>
           <br>
-          <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput">
+          <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput" style="display: block">
             <Label style="float: left;">Alcohol:</Label>
             <input style="float: right;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
            <br>
@@ -77,11 +86,9 @@
             <input style="float: right;" type="text" id="namesearch" placeholder="manhattan, martini, punch, etc"></input>
             <br>
             <br>
-            <button style="float: left;" type="submit" class="runSearch">Search for Cocktail</button>
+            <button type="submit" class="runSearch">Search for Cocktail</button>
           </form>
-          <br>
-          <button type="submitRandom" class="randomSearch">Random Search
-          </button>
+          <button type="submitRandom" class="randomSearch">Random Search</button>
         </div>  
       <div class="Favorites tile sectionColor stylesec">
         <h2>Favorite</h2>
