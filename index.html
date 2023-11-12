@@ -7,11 +7,92 @@
   <title>Beer and Coctails</title>
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
   />
+  <style>
+    .backgroundColor {
+      background-color: #BEE9E8;
+    }
+    .sectionColor {
+      background-color: #62B6CB;
+    }
+    button {
+      background-color:#1B4965;
+      color:#CAE9FF;
+      border-radius: 25px;
+      border: none;
+      padding: 5px;
+      margin: 5px;
+      display: block;
+    }
+    .title {
+      background-color:#1B4965;
+      color:#CAE9FF;
+    }
+    .linkText {
+      color:#5FA8D3;
+    }
+    
+    .tile {
+      border-radius: 5px;
+    }
+
+    h1 {
+      font-size: 25px;
+    }
+    h2 {
+      font-size: 15px;
+      text-align: center;
+    }
+    .stylesec {
+      padding:10px;
+      margin: 5px;
+    }
+  </style>
 </head>
 
-<body>
+<body class="backgroundColor box">
+  <div class="tile is-ancestor stylesec">
+    <div class="randomBeer tile is-8 sectionColor stylesec">
+      <h2>Random Beer</h2>
+    </div>
+    <div class="title tile is-4 stylesec">
+      <img src="assets/js/images/martini.png" style="height: 100px;width:100px">
+      <h1 style="display:block;">Pour Decisions</h1>
+      <br>
+      <h2 style="display:block;">A Spirited Catalog of Cocktails and Beers</h2>
+    </div>
+  </div>
+    <div class="bottom tile is-ancestor">
+      <div class="is-vertical tile is-4">
+        <div class="cocktailSearch tile sectionColor stylesec">
+          <h2 class="" style="display:block;">Cocktail Search</h2>
+          <br>
+          <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput">
+            <Label style="float: left;">Alcohol:</Label>
+            <input style="float: right;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
+           <br>
+            <br>
+            <Label style="float: left;" class="">Name:</Label>
+            <input style="float: right;" type="text" id="namesearch" placeholder="manhattan, martini, punch, etc"></input>
+            <br>
+            <br>
+            <button style="float: left;" type="submit" class="runSearch">Search for Cocktail</button>
+          </form>
+          <br>
+          <button type="submitRandom" class="randomSearch">Random Search
+          </button>
+        </div>  
+      <div class="Favorites tile sectionColor stylesec">
+        <h2>Favorite</h2>
+      </div>
+    </div> 
+    <div class="cocktailResults tile is-8 sectionColor stylesec">
+    <h2>Search Results</h2>
+    </div>
+  </div>
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
