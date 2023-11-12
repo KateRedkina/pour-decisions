@@ -7,29 +7,47 @@
   <title>Beer and Coctails</title>
   <link
     rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
   />
+  <style>
+    .backgroundColor {
+      background-color: #BEE9E8;
+    }
+    .sectionColor {
+      background-color: #62B6CB;
+    }
+    button {
+      background-color:#1B4965;
+      color:#CAE9FF;
+      border-radius: 25px;
+      border: none;
+      padding: 5px;
+    }
+    .linkText {
+      color:#5FA8D3;
+    }
+  </style>
 </head>
 
-<body>
+<body class="backgroundColor">
     <div class="title"></div>
     <div class="randomBeer"></div>
-    <div class="cocktailSearch">
-      <h2 color="has-background-#62B6CB">Cocktail Search</h2>
-      <form>
-        <Label>Alcohol</Label>
-        <input type="text" id="alcoholInput" name="AlcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
-            </div>
-          </div>
-        </div>
-        <br>
-        <Label>Name</Label>
-        <input type="text" id="namesearch" name="namesearch"></input>
-      </form>
-      <br>
-      <br>
-      <button class="runSearch">Search for Cocktail</button>
-      <button class="randomSearch">Random Search</button>
+    <div class="columns is-mobile">
+      <div class="cocktailSearch sectionColor column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop">
+        <h2 class="has-text-centered">Cocktail Search</h2>
+        <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput">
+          <Label style="float: left;">Alcohol:</Label>
+          <input style="float: right;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
+          <br>
+          <br>
+          <Label style="float: left;" class="">Name:</Label>
+          <input style="float: right;" type="text" id="namesearch" placeholder="manhattan, martini, punch, etc"></input>
+          <br>
+          <br>
+          <button style="float: left;" type="submit" class="runSearch">Search for Cocktail</button>
+        </form>
+        <button style="float: right;" type="submitRandom" class="randomSearch">Random Search</button>
+      </div>
     </div>
     <div class="Favorites"></div>
     <div class="cocktailResults"></div>
