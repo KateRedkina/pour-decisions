@@ -32,6 +32,7 @@
       color:#CAE9FF;
       border: 10px;
       margin: 5px;
+      overflow: hidden;
     }
     .linkText {
       color:#5FA8D3;
@@ -44,16 +45,28 @@
     h1 {
       font-size: 25px;
       display: block;
+      margin: 0;
+      text-align: center;
     }
     h2 {
       font-size: 15px;
       text-align: center;
       display: block;
+      margin: 0;
+
     }
     .stylesec {
       padding:10px;
       border: 10px;
       margin: 5px;
+    }
+    
+    .fix-Content {
+      border: none;
+      box-shadow: none;
+      width: 100%;
+      background-color: transparent;
+      height: 100%;
     }
   </style>
 </head>
@@ -63,18 +76,19 @@
     <div class="randomBeer tile is-8 sectionColor stylesec">
       <h2>Random Beer</h2>
     </div>
-    <div class="title tile is-4 stylesec">
-      <img src="assets/js/images/martini.png" style="height: 100px;width:100px float: left;">
-      <div class="tile is-3">
-      <h1 style="float:right; display:block;">Pour Decisions</h1>
+    <div class="title tile is-4">
+      <div class="box fix-Content title">
+      <img src="assets/js/images/martini.png" style="height: 100px; width:100px; margin-right: 10px; float: left;">
+      <h1 style="display:block;">Pour Decisions</h1>
       <br>
-      <h2 style="float:right; display:block;">A Spirited Catalog of Cocktails and Beers</h2>
-    </div>
+      <h2 style="display:block;">A Spirited Catalog of Cocktails and Beers</h2>
+      </div>
     </div>
   </div>
     <div class="bottom tile is-ancestor">
       <div class="is-vertical tile is-4">
         <div class="cocktailSearch tile sectionColor stylesec">
+          <div class="box fix-Content">
           <h2>Cocktail Search</h2>
           <br>
           <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput" style="display: block">
@@ -89,6 +103,7 @@
             <button type="submit" class="runSearch">Search for Cocktail</button>
           </form>
           <button type="submitRandom" class="randomSearch">Random Search</button>
+        </div>
         </div>  
       <div class="Favorites tile sectionColor stylesec">
         <h2>Favorite</h2>
