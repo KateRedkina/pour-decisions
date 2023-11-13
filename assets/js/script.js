@@ -28,3 +28,38 @@ function runCocktailSearch () {
             console.log(response);
         });
     }
+
+
+var RandomSearchButton = document.querySelector('#randomsearch');
+var SearchResult = document.querySelector('#searchresult');
+
+document.getElementById('RandomSearchButton').addEventListener('click', function (event) {
+    event.preventDefault();
+
+    console.log(RandomSearchButton.value);
+    runRandomSearchButton();
+});
+
+function runRandomSearchButton() {
+
+    var UserInput = RandomSearchButton.value;
+    console.log(UserInput);
+
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php?ph=${UserInput}`)
+        .then(results => results.json())
+        .then(apiData => {
+            console.log(apiData);
+            displayResults(apiData);
+        });
+}
+
+function displayResults(data) {
+    var drinkName = data.Coctails[1].Recipies;
+
+    var resultParagraph = document.createElement('p');
+    resultParagraph.textContent = `Random Search: ${drinkName}`;
+
+    SearchResult.innerHTML = '';
+    SearchResult.appendChild(resultParagraph);
+}
+    
