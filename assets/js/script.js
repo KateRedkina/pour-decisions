@@ -1,64 +1,58 @@
-var AlcoholInputEl = document.querySelector('#alcoholInput');
-var NameSearchEl = document.querySelector('#namesearch');
+var alcoholInputEl = document.querySelector('#alcoholInput');
+var nameSearchEl = document.querySelector('#nameSearch');
+var beerTitle = document.querySelector('#beerTitle');
+var beerImage = document.querySelector('#beerImage');
+var beerDescription = document.querySelector('#beerDescription');
+var randomSearchButton = document.querySelector('#randomSearchButton');
+var searchResult = document.querySelector('#searhResult');
 
 document.querySelector('form.cocktailSearchInput').addEventListener('submit', function (e) {
-
     e.preventDefault();
-
-    console.log(AlcoholInputEl.value);
-    console.log(NameSearchEl.value);
+    console.log(alcoholInputEl.value);
+    console.log(nameSearchEl.value);
     runCocktailSearch();
 });
 
 function runCocktailSearch () {
-    var AlcoholsearchParam = AlcoholInputEl.value; 
-    var AlcoholURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i=' + AlcoholsearchParam;
-    
-    console.log(AlcoholURL)
-    fetch(AlcoholURL)
+    var alcoholSearchParam = alcoholInputEl.value; 
+    var alcoholURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?i=' + alcoholSearchParam;    
+    console.log(alcoholURL)
+    fetch(alcoholURL)
         .then(function (response) {
            console.log(response);
         });
-    var NamesearchParam = NameSearchEl.value; 
-    var NameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + AlcoholInputEl;
-          
-    console.log(NameURL)
-    fetch(NameURL)
+    var nameSearchParam = nameSearchEl.value; 
+    var nameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + alcoholInputEl;          
+    console.log(nameURL)
+    fetch(nameURL)
         .then(function (response) {
             console.log(response);
         });
     }
 
-
-var RandomSearchButton = document.querySelector('#randomsearch');
-var SearchResult = document.querySelector('#searchresult');
-
-document.getElementById('RandomSearchButton').addEventListener('click', function (event) {
+randomSearchButton.addEventListener('click', function (event) {
     event.preventDefault();
     runRandomSearchButton();
-
 });
 
 function runRandomSearchButton() {
-
-   
-
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(results => results.json())
         .then(apiData => {
             console.log(apiData);
-//            displayResults(apiData);
         });
 }
 
-
-//function displayResults(data) {
-//    var drinkName = data.Coctails[1].Recipies;
-
-//    var resultParagraph = document.createElement('p');
-//    resultParagraph.textContent = `Random Search: ${drinkName}`;
-
-//    SearchResult.innerHTML = '';
-//    SearchResult.appendChild(resultParagraph);
-
-    
+function randomBeer(){
+    var randomBeerUrl = "https://api.punkapi.com/v2/beers/random"
+    fetch(randomBeerUrl)
+        .then(function(response){
+        return response.json();
+    })
+    .then(function (data) {
+          beerTitle.textContent = data[0].name;
+          beerImage.setAttribute("src", data[0].image_url);
+          beerDescription.textContent = data[0].description;
+    });
+}
+randomBeer();  

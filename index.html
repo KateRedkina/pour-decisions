@@ -14,9 +14,11 @@
       background-color: #BEE9E8;
 
     }
+
     .sectionColor {
       background-color: #62B6CB;
     }
+
     button {
       background-color:#1B4965;
       color:#CAE9FF;
@@ -27,6 +29,7 @@
       float: left;
       height: fit-content;
     }
+
     .title {
       background-color:#1B4965;
       color:#CAE9FF;
@@ -35,6 +38,7 @@
       overflow: hidden;
 
     }
+
     .linkText {
       color:#5FA8D3;
     }
@@ -56,6 +60,7 @@
       margin: 0;
 
     }
+
     .stylesec {
       padding:10px;
       border: 10px;
@@ -69,13 +74,41 @@
       background-color: transparent;
       height: 100%;
     }
+
+    .beerOfTheMoment{
+      font-size: 25px;
+      text-align: center;
+      font-weight: bold;
+      display: block;
+      margin: 0;
+    }
+
+    .beerTitle{
+      padding: 10px;
+      display: block;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body class="backgroundColor box">
-  <div class="tile is-ancestor">
+<div class="tile is-ancestor">
     <div class="randomBeer tile is-8 sectionColor stylesec">
-      <h2>Random Beer</h2>
+      <div class="box fix-Content">
+        <p class = "beerOfTheMoment">Beer of the Moment</p>        
+        <div class="box">
+          <strong id="beerTitle"> </strong>
+          <article class="media">            
+            <img id="beerImage" src="" alt="Random Beer"
+                 style="height: 200px; width:130px; margin-right: 10px; float: left;">
+            <div class="media-content">
+            <div class="content">
+              <p id="beerDescription" style="display: flex; margin-left: 50px; align-items: center;"> </p>
+            </div>
+          </div>
+          </article>
+        </div>
+      </div>      
     </div>
     <div class="title tile is-4">
       <div class="box fix-Content title">
@@ -98,15 +131,15 @@
            <br>
             <br>
             <Label style="float: left;" class="">Name:</Label>
-            <input style="float: right;" type="text" id="namesearch" placeholder="manhattan, martini, punch, etc"></input>
+            <input style="float: right;" type="text" id="nameSearch" placeholder="manhattan, martini, punch, etc"></input>
             <br>
             <br>
             <button type="submit" class="runSearch">Search for Cocktail</button>
           </form>
           <br>
           <br>
-          <button type="submitRandom" class="randomSearch" id = "RandomSearchButton">Random Search</button> 
-        </div id = "SearhResult"> 
+          <button type="submitRandom" class="randomSearch" id = "randomSearchButton">Random Search</button> 
+        </div id = "searhResult"> 
         </div>  
       <div class="Favorites tile sectionColor stylesec">
         <h2>Favorite</h2>
@@ -116,11 +149,7 @@
     <h2>Search Results</h2>
     </div>
   </div>
-
-
-
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
-
 </html>
