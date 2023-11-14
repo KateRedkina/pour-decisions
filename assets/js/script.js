@@ -36,7 +36,7 @@ var SearchResult = document.querySelector('#searchresult');
 document.getElementById('RandomSearchButton').addEventListener('click', function (event) {
     event.preventDefault();
 
-    console.log(RandomSearchButton.value);
+    
     runRandomSearchButton();
 });
 
