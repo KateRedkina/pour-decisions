@@ -35,15 +35,13 @@ var SearchResult = document.querySelector('#searchresult');
 
 document.getElementById('RandomSearchButton').addEventListener('click', function (event) {
     event.preventDefault();
-
     
-    runRandomSearchButton();
+
 });
 
 function runRandomSearchButton() {
 
-    var UserInput = RandomSearchButton.value;
-    console.log(UserInput);
+   
 
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php?ph=${UserInput}`)
         .then(results => results.json())
