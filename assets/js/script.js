@@ -62,3 +62,114 @@ function runRandomSearchButton() {
 //    SearchResult.appendChild(resultParagraph);
 
     
+// Saved Favorites
+function saveToFavorites() {
+    //Get image source and name
+    var imageElement = document.getElementById('image');
+    var imageSrc = imageElement.src;
+    var imageName = imageElement.alt;
+
+    //Create a list item
+    var listItem = document.createElement('li');
+    listItem.innerHTML = '<img src="' + imageSrc + '" alt="' + imageName + '"> ' + imageName;
+
+    //append the list item to the favorites list
+
+    document.getElementById('favoritesList').appendChild(listItem);
+
+
+// event listener for mouseenter effect    
+    listItem.addEventListener('mouseenter',
+    function() {
+        showRemoveButton(listItem);
+    });
+   
+    listItem.addEventListener('mouseLeave',
+    function() {
+        hideRemoveButton(listItem);
+    });
+    favoriteList.appendChild(listItem);
+    saveToFavorites(newFavorite);
+}
+
+
+
+
+// saves to favorites
+function saveToFavorites(favorite) {
+   let favorites = localStorage.getItem('favoritesList') ?
+   JSON.parse(localStorage.getItem('favoritesList')) : [];
+   favorites.push(favorite);
+   localStorage.setItem('favoritesList', JSON.stringify(favorites));
+}
+
+
+
+
+// button icon gets event listener for click
+function showRemoveButton(item) {
+    var removeButton = document.createElement('button');
+    removeButton.textContent = '❤️';
+    removeButton.addEventListener('click',
+    function() {
+        removeFavorite(item);
+    });
+    item.appendChild(removeButton);
+}
+
+
+
+
+function hideRemoveButton(item) {
+    item.removeChild(item.lastChild);
+}
+
+
+// removes item from localStorage
+function removeFavorite(item) {
+    var favoriteList = document.getElementById('favoritesList');
+    var favorites = JSON.parse(localStorage.getItem('Favorites'));
+    var text = item.textContent;
+    var index = favorites.indexOf(text);
+    if (index > -1) {
+        favorites.splice(index, 1);
+        localStorage.setItem('favoritesList',
+        JSON.stringify(favorites));
+    }
+    favoriteList.removeChild(item);
+}
+
+
+
+
+// items stay when page is refreshed
+window.onload = function() {
+    let favorites = localStorage.getItem('favorites') ?
+    JSON.parse(localStorage.getItem('Favorites')) : [];
+    var favoriteList = document.getElementById('favoritesList');
+    favorites.forEach(function(favorite) {
+        var listItem = document.createElement('li');
+
+
+        listItem.appendChild(document.createTextNode(favorite));
+
+
+        listItem.addEventListener('mouseenter',
+        function() {
+            showRemoveButton(listItem);
+        });
+
+
+        listItem.addEventListener('mouseleave',
+        function() {
+            hideRemoveButton(listItem);
+        });
+
+
+        favoriteList.appendChild(listItem);
+
+
+    });
+
+
+};
