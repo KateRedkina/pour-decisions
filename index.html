@@ -18,6 +18,12 @@
     --linkColor: #5FA8D3;
     }
     
+    #logo{
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
     .backgroundColor,
     .modal-card-body{
       background-color: var(--backgroundColor);
@@ -36,6 +42,7 @@
       margin: 5px;
       float: left;
       height: fit-content;
+      width: -webkit-fill-available;
     }
 
     .title {
@@ -60,6 +67,7 @@
       margin: 0;
       text-align: center;
     }
+
     h2 {
       font-size: 15px;
       text-align: center;
@@ -82,19 +90,14 @@
       height: 100%;
     }
 
-    .beerOfTheMoment{
+    .sectionTitle{
       font-size: 25px;
       text-align: center;
       font-weight: bold;
       display: block;
       margin: 0;
-    }
-
-    .beerTitle{
-      padding: 10px;
-      display: block;
-      text-align: center;
-    }
+      color: var(--buttonTitleHeartColor);
+    }    
 
     .modal-card-head,
     .modal-card-foot{
@@ -115,12 +118,12 @@
 </head>
 
 <body class="backgroundColor box">
-<div class="tile is-ancestor">
+  <div class="tile is-ancestor">
     <div class="randomBeer tile is-8 sectionColor stylesec">
       <div class="box fix-Content">
-        <p class = "beerOfTheMoment">Beer of the Moment</p>        
+        <p class = "sectionTitle">Beer of the Moment</p>        
         <div class="box">
-          <strong id="beerTitle"> </strong>
+          <p id="beerTitle" style="text-align: center; font-weight: 700; color: var(--buttonTitleHeartColor)"> </p>
           <article class="media">            
             <img id="beerImage" src="" alt="Random Beer"
                  style="height: 200px; width:130px; margin-right: 10px; float: left;">
@@ -128,60 +131,80 @@
             <div class="content">
               <p id="beerDescription" style="display: flex; margin-left: 50px; align-items: center;"> </p>
             </div>
-          </div>
+            </div>
           </article>
         </div>
       </div>      
     </div>
-    <div class="title tile is-4">
+
+
+    <div class="title tile">
       <div class="box fix-Content title">
-      <img src="assets/js/images/martini.png" style="height: 100px; width:100px; margin-right: 10px; float: left;">
-      <h1 style="display:block;">Pour Decisions</h1>
-      <br>
-      <h2 style="display:block;">A Spirited Catalog of Cocktails and Beers</h2>
+        <div id="logoContainer" style="padding: 10%;">
+          <h1 style="display:block;">Pour Decisions</h1>
+          <br>
+          <h2 style="display:block;">A Spirited Catalog of Cocktails and Beers</h2>
+          <div id="logo">
+            <img src="assets/js/images/martini.png" style="height: 100px; width:100px;">
+          </div>
+        </div>      
       </div>
     </div>
   </div>
-    <div class="bottom tile is-ancestor">
-      <div class="is-vertical tile is-4">
-        <div class="cocktailSearch tile sectionColor stylesec">
-          <div class="box fix-Content">
-          <h2>Cocktail Search</h2>
+
+
+  <div class="bottom tile is-ancestor">
+    <div class="is-vertical tile is-4">
+      <div class="cocktailSearch tile sectionColor stylesec">
+        <div class="box fix-Content">
+          <p class="sectionTitle">Cocktail Search</p>
           <br>
-          <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput" style="display: block">
-            <Label style="float: left;">Alcohol:</Label>
-            <input style="float: right;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
-           <br>
+          <form id="cocktailSearchInput" class="cocktailSearchInput" style="display: block">
+            <div class="tile is-ancestor">
+              <div class="tile is-2">
+                <p style="color: var(--buttonTitleHeartColor);">Alcohol:</p>
+              </div>
+              <div class="tile">
+                <input style="width: 100%;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
+              </div>
+            </div>
             <br>
-            <Label style="float: left;" class="">Name:</Label>
-            <input style="float: right;" type="text" id="nameSearch" placeholder="manhattan, martini, punch, etc"></input>
             <br>
+            <div class="tile is-ancestor">
+              <div class="tile is-2">
+                <p style="color: var(--buttonTitleHeartColor);">Name:</p>
+              </div>
+              <div class="tile">
+                <input style="width: 100%;" type="text" id="nameSearch" placeholder="manhattan, martini, punch, etc"></input>
+              </div>
+            </div>
             <br>
             <button type="submit" class="runSearch">Search for Cocktail</button>
           </form>
-          <br>
-          <br>
           <button type="submitRandom" class="randomSearch" id = "randomSearchButton">Random Search</button> 
-        </div id = "searhResult"> 
-        </div>  
+        </div> 
+      </div>  
       <div class="Favorites tile sectionColor stylesec">
-        <h2>Favorite</h2>
+        <div class="box fix-Content">
+         <p class="sectionTitle">Favorite</p>
+        </div>
       </div>
     </div> 
-    <div class="cocktailResults tile is-8 sectionColor stylesec">
-    <h2>Search Results</h2>
-
-     <!-- ===This button below is for checking how the modal box is working=== 
-    <button class="js-modal-trigger" data-target="modal-js-example">
-      Open JS example modal
-    </button> -->
+    <div class="cocktailResults tile sectionColor stylesec">
+      <div class="box fix-Content">
+        <p class="sectionTitle">Search Results</p>
+      </div>    
+   <!-- ===This button below is for checking how the modal box is working=== 
+  <button class="js-modal-trigger" data-target="modal-js-example">
+    Open JS example modal
+  </button> -->
     </div>
   </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="./assets/js/script.js"></script>
 
-   <!-- Modal -->
-   <div id="modal-js-example" class="modal">
+ <!-- Modal -->
+  <div id="modal-js-example" class="modal">
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
@@ -206,7 +229,7 @@
       </section>
       <footer class="modal-card-foot">
       <!-- “Add to Favorites” button -->
-      </footer>
+      </footer>  
     </div>
   </div>
 </div>
