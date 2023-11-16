@@ -10,18 +10,26 @@
     href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
   />
   <style>
-    .backgroundColor {
-      background-color: #BEE9E8;
-
+    :root {
+    --backgroundColor: #BEE9E8;
+    --sectionBackgroundColor: #62B6CB;
+    --buttonTitleHeartColor: #1B4965;
+    --textColor: #CAE9FF;
+    --linkColor: #5FA8D3;
+    }
+    
+    .backgroundColor,
+    .modal-card-body{
+      background-color: var(--backgroundColor);
     }
 
     .sectionColor {
-      background-color: #62B6CB;
+      background-color: var(--sectionBackgroundColor);
     }
 
     button {
-      background-color:#1B4965;
-      color:#CAE9FF;
+      background-color: var(--buttonTitleHeartColor);
+      color: var(--textColor);
       border-radius: 25px;
       border: none;
       padding: 5px;
@@ -31,16 +39,15 @@
     }
 
     .title {
-      background-color:#1B4965;
-      color:#CAE9FF;
+      background-color: var(--buttonTitleHeartColor);
+      color: var(--textColor);
       border: 10px;
       margin: 5px;
       overflow: hidden;
-
     }
 
     .linkText {
-      color:#5FA8D3;
+      color: var(--linkColor);
     }
     
     .tile {
@@ -88,6 +95,22 @@
       display: block;
       text-align: center;
     }
+
+    .modal-card-head,
+    .modal-card-foot{
+       background-color: var(--buttonTitleHeartColor);
+    }
+
+    .modal-card-title{
+      color: var(--textColor);
+      text-align: center;
+    }
+
+    .modalTitleText{
+      text-align: center;
+      font-weight: 700;
+      color: var(--buttonTitleHeartColor)
+    }    
   </style>
 </head>
 
@@ -147,9 +170,45 @@
     </div> 
     <div class="cocktailResults tile is-8 sectionColor stylesec">
     <h2>Search Results</h2>
+
+     <!-- ===This button below is for checking how the modal box is working=== 
+    <button class="js-modal-trigger" data-target="modal-js-example">
+      Open JS example modal
+    </button> -->
     </div>
   </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
+
+   <!-- Modal -->
+   <div id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Title of Coctail</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body is-justify-content-space-between columns">
+        <div class="column is-3">
+          <img  id="coctailImage" src="" alt="Coctail Image"
+                style="height: 100px; width:100px; margin-right: 10px; float: left;">
+        </div>
+        <div class="modalTextBlock column is-9">
+          <div class="box is-12">
+            <p class="modalTitleText"> Description </p>
+            <p id="coctailDescription"> Lorem ipsum </p>
+          </div>
+          <div class="box is-12">
+            <p class="modalTitleText"> Recipe </p>
+            <p id="coctailRecipe"> Lorem ipsum </p>
+          </div>              
+        </div>          
+      </section>
+      <footer class="modal-card-foot">
+      <!-- “Add to Favorites” button -->
+      </footer>
+    </div>
+  </div>
+</div>
 </body>
 </html>
