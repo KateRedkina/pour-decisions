@@ -5,6 +5,8 @@ var beerImage = document.querySelector('#beerImage');
 var beerDescription = document.querySelector('#beerDescription');
 var randomSearchButton = document.querySelector('#randomSearchButton');
 var cocktailSearchResult = document.getElementById('cocktailResults');
+var searchResultSectionEl = document.getElementById("searchResultSection");
+
 
 document.querySelector('form.cocktailSearchInput').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -18,6 +20,7 @@ var alcoholSearchParam = alcoholInputEl.value;
 var alcoholURL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + alcoholSearchParam; 
 var nameSearchParam = nameSearchEl.value; 
 var nameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + nameSearchParam;  
+
     fetch(alcoholURL)
         .then(function (response) {
             return response.json();     
@@ -28,7 +31,8 @@ var nameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name
             return response.json();   
             })
             .then (function (nameResponse) {
-                displayRepos (alcoholResponse, nameResponse)
+                displayRepos (alcoholResponse);
+                displayReposName (nameResponse);
             })
         })
     }
@@ -40,15 +44,13 @@ randomSearchButton.addEventListener('click', function (event) {
     
 });
 
-function displayRepos (alcoholResponse,nameResponse) {
+function displayRepos (alcoholResponse) {
     if (alcoholResponse.drinks.length === 0) {
-        cocktailSearchResult.textContent = 'No results found.';
         return;
       }
       else {
-      for (var i = 0; i < 50; i++) {
+      for (var i = 0; i < 10; i++) {
         var cocktailIDUrl = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + alcoholResponse.drinks[i].idDrink;
-        console.log(cocktailIDUrl);
         fetch(cocktailIDUrl)
             .then(function(response) {
                 return response.json();})
@@ -56,22 +58,36 @@ function displayRepos (alcoholResponse,nameResponse) {
                     finalDisplay(URLresponse);
                 })
         
-        // console.log(URLresponse);
       }}
     }
+      function displayReposName (nameResponse) {
+        if (nameResponse.drinks.length === 0) {
+            return;
+          }
+          else {
+          for (var z = 0; z < 10; z++) {
+            var cocktailIDUrlName = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + nameResponse.drinks[z].idDrink;;
+            fetch(cocktailIDUrlName)
+                .then(function(response) {
+                    return response.json();})
+                .then (function (URLresponseName) {
+                        finalDisplayName(URLresponseName);
+                    })
+            
+          }}
+        }
+
+
 
     function finalDisplay (URLresponse) {
-        console.log(URLresponse);
         if (URLresponse.length === 0) {
-            cocktailSearchResult.textContent = "ERROR";
+            searchResultSectionEl.textContent = "No results for alcohol type.";
             return;
         }
         else {
             for (var x = 0; x < URLresponse.drinks.length; x++) {
                 var imageThumbnail = URLresponse.drinks[x].strDrinkThumb;
                 var cocktailNameResult = URLresponse.drinks[x].strDrink;
-                console.log(imageThumbnail);
-                console.log(cocktailNameResult);
                  var ResultItem = document.createElement("div");
                 ResultItem.setAttribute("class","card");
                 ResultItem.setAttribute("style", "width:100%; display:block; height:fit-content");
@@ -85,10 +101,11 @@ function displayRepos (alcoholResponse,nameResponse) {
                 contResultImage.setAttribute("class", "media-left");
                 mediaResultItem.appendChild(contResultImage);
                 var ResultImage = document.createElement("figure");
+                ResultImage.setAttribute("style", "width: 100px; length: 100px;");
                 contResultImage.appendChild(ResultImage);
                 var ResultActImage = document.createElement("img");
                 ResultActImage.setAttribute("src",imageThumbnail);
-                ResultActImage.setAttribute("style", "height: 100px; width: 100px");
+                ResultActImage.setAttribute("style", "width: 100px; length: 100px;");
                 contResultImage.appendChild(ResultActImage);
                 var MediaContent = document.createElement("div");
                 MediaContent.setAttribute("class", "media-content");
@@ -101,31 +118,44 @@ function displayRepos (alcoholResponse,nameResponse) {
         }
     }
 
-    // var ResultItem = document.createElement("div");
-    // ResultItem.setAttribute("class","card");
-    // ResultItem.setAttribute("style", "width:100%; display:block; height:fit-content");
-    // var subResultItem = document.createElement("div");
-    // subResultItem.setAttribute("class", "card-content")
-    // ResultItem.appendChild(subResultItem);
-    // var mediaResultItem = document.createElement("div");
-    // mediaResultItem.setAttribute("class", "media");
-    // subResultItem.appendChild(mediaResultItem);
-    // var contResultImage = document.createElement("div");
-    // contResultImage.setAttribute("class", "media-left");
-    // mediaResultItem.appendChild(contResultImage);
-    // var ResultImage = document.createElement("figure");
-    // ResultImage.setAttribute("class", "image is 100x100");
-    // contResultImage.appendChild(ResultImage);
-    // var ResultActImage = document.createElement("img");
-    // ResultActImage.setAttribute("src",imageThumbnail);
-    // contResultImage.appendChild(ResultActImage);
-    // var MediaContent = document.createElement("div");
-    // MediaContent.setAttribute("class", "media-content");
-    // mediaResultItem.appendChild(MediaContent);
-    // var cocktailName = document.createElement("a");
-    // cocktailName.textContent = cocktailNameResult;
-    // MediaContent.appendChild(cocktailName);
-    // cocktailSearchResult.appendChild(ResultItem);
+    function finalDisplayName (URLresponseName) {
+        if (URLresponseName.length === 0) {
+            return;
+        }
+        else {
+            for (var y = 0; y < URLresponseName.drinks.length; y++) {
+                var imageThumbnailName = URLresponseName.drinks[y].strDrinkThumb;
+                var cocktailNameResultName = URLresponseName.drinks[y].strDrink;
+                console.log(cocktailNameResultName);
+                 var ResultItem = document.createElement("div");
+                ResultItem.setAttribute("class","card");
+                ResultItem.setAttribute("style", "width:100%; display:block; height:fit-content");
+                var subResultItem = document.createElement("div");
+                subResultItem.setAttribute("class", "card-content")
+                ResultItem.appendChild(subResultItem);
+                var mediaResultItem = document.createElement("div");
+                mediaResultItem.setAttribute("class", "media");
+                subResultItem.appendChild(mediaResultItem);
+                var contResultImage = document.createElement("div");
+                contResultImage.setAttribute("class", "media-left");
+                mediaResultItem.appendChild(contResultImage);
+                var ResultImage = document.createElement("figure");
+                ResultImage.setAttribute("style", "width: 100px; length: 100px;");
+                contResultImage.appendChild(ResultImage);
+                var ResultActImage = document.createElement("img");
+                ResultActImage.setAttribute("src",imageThumbnailName);
+                ResultActImage.setAttribute("style", "width: 100px; length: 100px;");
+                contResultImage.appendChild(ResultActImage);
+                var MediaContent = document.createElement("div");
+                MediaContent.setAttribute("class", "media-content");
+                mediaResultItem.appendChild(MediaContent);
+                var cocktailName = document.createElement("a");
+                cocktailName.textContent = cocktailNameResultName;
+                MediaContent.appendChild(cocktailName);
+                cocktailSearchResult.appendChild(ResultItem);
+            }
+        }
+    }
       
       
 
@@ -133,7 +163,6 @@ function runRandomSearchButton() {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(results => results.json())
         .then(apiData => {
-            console.log(apiData);
         });
 }
 
