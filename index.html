@@ -87,6 +87,10 @@
       display: block;
       text-align: center;
     }
+
+    .card {
+      margin: 20px;
+    }
   </style>
 </head>
 
@@ -126,11 +130,12 @@
           <br>
           <form style="text-align: center;" id="cocktailSearchInput" class="cocktailSearchInput" style="display: block">
             <Label style="float: left;">Alcohol:</Label>
-            <input style="float: right;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
+            <input class="input is-danger" style="float: right;" type="text" id="alcoholInput" placeholder="vodka, gin, tequila, etc."></input> 
            <br>
             <br>
             <Label style="float: left;" class="">Name:</Label>
-            <input style="float: right;" type="text" id="nameSearch" placeholder="manhattan, martini, punch, etc"></input>
+            <input class="input" style="float:right;" type="text" id="nameSearch" placeholder="manhattan, martini, punch, etc"></input>
+            <p class="help is-danger"> Required Field</p>
             <br>
             <br>
             <button type="submit" class="runSearch">Search for Cocktail</button>
@@ -138,16 +143,18 @@
           <br>
           <br>
           <button type="submitRandom" class="randomSearch" id = "randomSearchButton">Random Search</button> 
-        </div id = "searhResult"> 
+        </div> 
         </div>  
       <div class="Favorites tile sectionColor stylesec">
         <h2>Favorite</h2>
       </div>
     </div> 
     <div class="tile is-8 sectionColor stylesec" id="cocktailResults">
-    <h2>Search Results</h2>
-    <section id="searchResultSection"></section>
+      <div class = "tile-is-parent">
+      <h2 class = "tile-is-parent is-12">Search Results</h2>
+      <section id="searchResultSection"></section>
     <br>
+    </div>
     </div>
   </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

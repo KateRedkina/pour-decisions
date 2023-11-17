@@ -77,8 +77,6 @@ function displayRepos (alcoholResponse) {
           }}
         }
 
-
-
     function finalDisplay (URLresponse) {
         if (URLresponse.length === 0) {
             searchResultSectionEl.textContent = "No results for alcohol type.";
@@ -88,32 +86,33 @@ function displayRepos (alcoholResponse) {
             for (var x = 0; x < URLresponse.drinks.length; x++) {
                 var imageThumbnail = URLresponse.drinks[x].strDrinkThumb;
                 var cocktailNameResult = URLresponse.drinks[x].strDrink;
-                 var ResultItem = document.createElement("div");
-                ResultItem.setAttribute("class","card");
-                ResultItem.setAttribute("style", "width:100%; display:block; height:fit-content");
+                var ResultItem = document.createElement("div");
+                ResultItem.setAttribute("class","card tile-is-parent");
                 var subResultItem = document.createElement("div");
-                subResultItem.setAttribute("class", "card-content")
+                subResultItem.setAttribute("class", "card-content tile-is-parent")
                 ResultItem.appendChild(subResultItem);
                 var mediaResultItem = document.createElement("div");
-                mediaResultItem.setAttribute("class", "media");
+                mediaResultItem.setAttribute("class", "media tile-is-parent");
                 subResultItem.appendChild(mediaResultItem);
                 var contResultImage = document.createElement("div");
-                contResultImage.setAttribute("class", "media-left");
+                contResultImage.setAttribute("class", "media-content");
+                contResultImage.setAttribute("style", "display:left;");
                 mediaResultItem.appendChild(contResultImage);
                 var ResultImage = document.createElement("figure");
-                ResultImage.setAttribute("style", "width: 100px; length: 100px;");
                 contResultImage.appendChild(ResultImage);
                 var ResultActImage = document.createElement("img");
                 ResultActImage.setAttribute("src",imageThumbnail);
                 ResultActImage.setAttribute("style", "width: 100px; length: 100px;");
+                ResultActImage.setAttribute("class", "tile is-4")
                 contResultImage.appendChild(ResultActImage);
                 var MediaContent = document.createElement("div");
-                MediaContent.setAttribute("class", "media-content");
+                MediaContent.setAttribute("class", "media-right");
+                MediaContent.setAttribute("style", "float:right");
                 mediaResultItem.appendChild(MediaContent);
                 var cocktailName = document.createElement("a");
                 cocktailName.textContent = cocktailNameResult;
                 MediaContent.appendChild(cocktailName);
-                cocktailSearchResult.appendChild(ResultItem);
+                searchResultSection.appendChild(ResultItem);
             }
         }
     }
@@ -125,11 +124,9 @@ function displayRepos (alcoholResponse) {
         else {
             for (var y = 0; y < URLresponseName.drinks.length; y++) {
                 var imageThumbnailName = URLresponseName.drinks[y].strDrinkThumb;
-                var cocktailNameResultName = URLresponseName.drinks[y].strDrink;
-                console.log(cocktailNameResultName);
-                 var ResultItem = document.createElement("div");
-                ResultItem.setAttribute("class","card");
-                ResultItem.setAttribute("style", "width:100%; display:block; height:fit-content");
+                var cocktailNameResultname = URLresponseName.drinks[y].strDrink;
+                var ResultItem = document.createElement("div");
+                ResultItem.setAttribute("class","card ");
                 var subResultItem = document.createElement("div");
                 subResultItem.setAttribute("class", "card-content")
                 ResultItem.appendChild(subResultItem);
@@ -137,22 +134,24 @@ function displayRepos (alcoholResponse) {
                 mediaResultItem.setAttribute("class", "media");
                 subResultItem.appendChild(mediaResultItem);
                 var contResultImage = document.createElement("div");
-                contResultImage.setAttribute("class", "media-left");
+                contResultImage.setAttribute("class", "media-content  tile-is-parent");
+                contResultImage.setAttribute("style", "display:left;");
                 mediaResultItem.appendChild(contResultImage);
                 var ResultImage = document.createElement("figure");
-                ResultImage.setAttribute("style", "width: 100px; length: 100px;");
                 contResultImage.appendChild(ResultImage);
                 var ResultActImage = document.createElement("img");
                 ResultActImage.setAttribute("src",imageThumbnailName);
                 ResultActImage.setAttribute("style", "width: 100px; length: 100px;");
+                ResultActImage.setAttribute("class", "tile is-4")
                 contResultImage.appendChild(ResultActImage);
                 var MediaContent = document.createElement("div");
-                MediaContent.setAttribute("class", "media-content");
+                MediaContent.setAttribute("class", "media-right");
+                MediaContent.setAttribute("style", "float:right");
                 mediaResultItem.appendChild(MediaContent);
                 var cocktailName = document.createElement("a");
-                cocktailName.textContent = cocktailNameResultName;
+                cocktailName.textContent = cocktailNameResultname;
                 MediaContent.appendChild(cocktailName);
-                cocktailSearchResult.appendChild(ResultItem);
+                searchResultSection.appendChild(ResultItem);
             }
         }
     }
