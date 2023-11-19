@@ -2,6 +2,7 @@ var alcoholInputEl = document.querySelector('#alcoholInput');
 var nameSearchEl = document.querySelector('#nameSearch');
 var beerTitle = document.querySelector('#beerTitle');
 var beerImage = document.querySelector('#beerImage');
+beerImage.setAttribute("src", "assets/images/Default Bottle.png");
 var beerDescription = document.querySelector('#beerDescription');
 var randomSearchButton = document.querySelector('#randomSearchButton');
 var cocktailSearchResult = document.getElementById('cocktailResults');
@@ -173,8 +174,9 @@ function randomBeer(){
     })
     .then(function (data) {
           beerTitle.textContent = data[0].name;
-          beerImage.setAttribute("src", data[0].image_url);
           beerDescription.textContent = data[0].description;
+          if (data[0].image_url) {
+          beerImage.setAttribute("src", data[0].image_url);}
     });
 }
 randomBeer();  
