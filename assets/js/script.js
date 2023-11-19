@@ -7,10 +7,16 @@ var beerDescription = document.querySelector('#beerDescription');
 var randomSearchButton = document.querySelector('#randomSearchButton');
 var cocktailSearchResult = document.getElementById('cocktailResults');
 var searchResultSectionEl = document.getElementById("searchResultSection");
+var SearchResult = document.querySelector('#searchresult');
 
+
+function clearDivs() {
+    searchResultSectionEl.innerHTML = '';
+}
 
 document.querySelector('form.cocktailSearchInput').addEventListener('submit', function (e) {
     e.preventDefault();
+    clearDivs();
     runCocktailSearch();
 });
 
@@ -41,6 +47,7 @@ var nameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name
 
 randomSearchButton.addEventListener('click', function (event) {
     event.preventDefault();
+    clearDivs();
     runRandomSearchButton();
     
 });
@@ -113,7 +120,7 @@ function displayRepos (alcoholResponse) {
                 var cocktailName = document.createElement("a");
                 cocktailName.textContent = cocktailNameResult;
                 MediaContent.appendChild(cocktailName);
-                searchResultSection.appendChild(ResultItem);
+                searchResultSectionEl.appendChild(ResultItem);
             }
         }
     }
