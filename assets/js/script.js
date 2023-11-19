@@ -113,10 +113,13 @@ function displayRepos (alcoholResponse) {
                 cocktailName.textContent = cocktailNameResult;
                 MediaContent.appendChild(cocktailName);
                 searchResultSection.appendChild(ResultItem);
+<<<<<<< HEAD
                 var addToFavoritesButton = document.createElement('button');
                 addToFavoritesButton.textContent = "+";
                 addToFavoritesButton.setAttribute("class", "favorite-btn");
                 addToFavoritesButton.appendChild(addToFavoritesButton);
+=======
+>>>>>>> 717a4951cf84eb0f49d89d35158c0ef70224d38e
             }
         }
     }
@@ -183,6 +186,7 @@ function randomBeer(){
 }
 randomBeer();  
 
+<<<<<<< HEAD
 // Saved Favorites
  function saveToFavorites() {
     //Get image source and name
@@ -294,3 +298,35 @@ window.onload = function() {
 
 
 };
+=======
+// ===Modal Box===
+document.addEventListener('DOMContentLoaded', () => {
+    // Functions to open and close a modal
+    function openModal($el) {
+      $el.classList.add('is-active');
+    }
+  
+    function closeModal($el) {
+      $el.classList.remove('is-active');
+    }
+  
+    // Add a click event on buttons to open a specific modal
+    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+      const modal = $trigger.dataset.target;
+      const $target = document.getElementById(modal);
+  
+      $trigger.addEventListener('click', () => {
+        openModal($target);
+      });
+    });
+  
+    // Add a click event on various child elements to close the parent modal
+    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+      const $target = $close.closest('.modal');
+  
+      $close.addEventListener('click', () => {
+        closeModal($target);
+      });
+    });
+  });
+>>>>>>> 717a4951cf84eb0f49d89d35158c0ef70224d38e
