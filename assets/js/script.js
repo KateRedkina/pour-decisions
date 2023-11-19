@@ -2,14 +2,21 @@ var alcoholInputEl = document.querySelector('#alcoholInput');
 var nameSearchEl = document.querySelector('#nameSearch');
 var beerTitle = document.querySelector('#beerTitle');
 var beerImage = document.querySelector('#beerImage');
+beerImage.setAttribute("src", "assets/images/Default Bottle.png");
 var beerDescription = document.querySelector('#beerDescription');
 var randomSearchButton = document.querySelector('#randomSearchButton');
 var cocktailSearchResult = document.getElementById('cocktailResults');
 var searchResultSectionEl = document.getElementById("searchResultSection");
+var SearchResult = document.querySelector('#searchresult');
 
+
+function clearDivs() {
+    searchResultSectionEl.innerHTML = '';
+}
 
 document.querySelector('form.cocktailSearchInput').addEventListener('submit', function (e) {
     e.preventDefault();
+    clearDivs();
     runCocktailSearch();
 });
 
@@ -40,6 +47,7 @@ var nameURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + name
 
 randomSearchButton.addEventListener('click', function (event) {
     event.preventDefault();
+    clearDivs();
     runRandomSearchButton();
     
 });
@@ -112,7 +120,7 @@ function displayRepos (alcoholResponse) {
                 var cocktailName = document.createElement("a");
                 cocktailName.textContent = cocktailNameResult;
                 MediaContent.appendChild(cocktailName);
-                searchResultSection.appendChild(ResultItem);
+                searchResultSectionEl.appendChild(ResultItem);
             }
         }
     }
@@ -173,8 +181,9 @@ function randomBeer(){
     })
     .then(function (data) {
           beerTitle.textContent = data[0].name;
-          beerImage.setAttribute("src", data[0].image_url);
           beerDescription.textContent = data[0].description;
+          if (data[0].image_url) {
+          beerImage.setAttribute("src", data[0].image_url);}
     });
 }
 randomBeer();  
