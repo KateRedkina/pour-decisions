@@ -120,6 +120,10 @@ function displayRepos (alcoholResponse) {
                 searchResultSection.appendChild(ResultItem);
             
             }
+            addToFavoritesButton.addEventListener("click", function() {
+                addToFavorites(result.subResultItem, result.ResultActImage);
+                console.log(addToFavorites);
+              });
         }
     }
 
@@ -165,6 +169,10 @@ function displayRepos (alcoholResponse) {
                 searchResultSection.appendChild(ResultItem);
                 
             }
+            addToFavoritesButton.addEventListener("click", function() {
+                addToFavorites(result.subResultItem, result.ResultActImage);
+                console.log(addToFavorites);
+              });
         }
     }
       
@@ -193,6 +201,5 @@ randomBeer();
 
 // Saved Favorites
 addToFavoritesButton.addEventListener("click", function() {
-  addToFavorites(result.subResultItem, result.ResultActImage);
-  console.log(addToFavorites);
+  addToFavorites(result.nameResponse, result.cocktailIDUrlName);
 });
