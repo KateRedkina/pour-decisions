@@ -164,7 +164,19 @@ function displayRepos (alcoholResponse) {
         }
     }
       
-      
+
+    var inputFavorite = document.querySelector('.inputFavorite');
+    var favBtn = document.getElementById('favoritesBtn');
+  
+    var savedFavorite = localStorage.getItem('savedFavorite');
+    if (savedFavorite) {
+      inputFavorite.value = savedFavorite;
+    }
+  
+    favBtn.addEventListener('click', function () {
+      var favoriteContent = inputFavorite.value;
+      localStorage.setItem('savedFavorite', favoriteContent);
+    });
 
 function runRandomSearchButton() {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)

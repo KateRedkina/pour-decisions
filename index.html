@@ -117,6 +117,15 @@
       font-weight: 700;
       color: var(--buttonTitleHeartColor)
     }    
+    .Favorites {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    }
+
+    .inputFavorite {
+    flex: 1;
+=}
   </style>
 </head>
 
@@ -190,7 +199,10 @@
       </div>  
       <div class="Favorites tile sectionColor stylesec">
         <div class="box fix-Content">
-         <p class="sectionTitle">Favorite</p>
+         <p class="sectionTitle">Favorites</p>
+         <textarea class="inputFavorite is-fullheight"> </textarea>
+         <button class="btn saveBtn" aria-label="save" id="favoritesBtn"> Save
+          </button>
         </div>
       </div>
     </div> 
