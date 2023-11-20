@@ -6,6 +6,7 @@ var beerDescription = document.querySelector('#beerDescription');
 var randomSearchButton = document.querySelector('#randomSearchButton');
 var cocktailSearchResult = document.getElementById('cocktailResults');
 var searchResultSectionEl = document.getElementById("searchResultSection");
+var addToFavoritesButton = document.querySelector("#favoritesList");
 
 
 document.querySelector('form.cocktailSearchInput').addEventListener('submit', function (e) {
@@ -93,6 +94,10 @@ function displayRepos (alcoholResponse) {
                 ResultItem.appendChild(subResultItem);
                 var mediaResultItem = document.createElement("div");
                 mediaResultItem.setAttribute("class", "media tile-is-parent");
+                var addToFavoritesButton = document.createElement('button');
+                addToFavoritesButton.textContent = "+";
+                addToFavoritesButton.setAttribute("class", "favorite-btn");
+                mediaResultItem.appendChild(addToFavoritesButton);
                 subResultItem.appendChild(mediaResultItem);
                 var contResultImage = document.createElement("div");
                 contResultImage.setAttribute("class", "media-content");
@@ -113,13 +118,7 @@ function displayRepos (alcoholResponse) {
                 cocktailName.textContent = cocktailNameResult;
                 MediaContent.appendChild(cocktailName);
                 searchResultSection.appendChild(ResultItem);
-<<<<<<< HEAD
-                var addToFavoritesButton = document.createElement('button');
-                addToFavoritesButton.textContent = "+";
-                addToFavoritesButton.setAttribute("class", "favorite-btn");
-                addToFavoritesButton.appendChild(addToFavoritesButton);
-=======
->>>>>>> 717a4951cf84eb0f49d89d35158c0ef70224d38e
+            
             }
         }
     }
@@ -139,6 +138,10 @@ function displayRepos (alcoholResponse) {
                 ResultItem.appendChild(subResultItem);
                 var mediaResultItem = document.createElement("div");
                 mediaResultItem.setAttribute("class", "media");
+                var addToFavoritesButton = document.createElement('button');
+                addToFavoritesButton.textContent = "+";
+                addToFavoritesButton.setAttribute("class", "favorite-btn");
+                mediaResultItem.appendChild(addToFavoritesButton);
                 subResultItem.appendChild(mediaResultItem);
                 var contResultImage = document.createElement("div");
                 contResultImage.setAttribute("class", "media-content  tile-is-parent");
@@ -158,7 +161,9 @@ function displayRepos (alcoholResponse) {
                 var cocktailName = document.createElement("a");
                 cocktailName.textContent = cocktailNameResultname;
                 MediaContent.appendChild(cocktailName);
+                
                 searchResultSection.appendChild(ResultItem);
+                
             }
         }
     }
@@ -186,147 +191,8 @@ function randomBeer(){
 }
 randomBeer();  
 
-<<<<<<< HEAD
 // Saved Favorites
- function saveToFavorites() {
-    //Get image source and name
-    var imageElement = document.getElementById('image');
-    var imageSrc = imageElement.src;
-    var imageName = imageElement.alt;
-
-    //Create a list item
-    var listItem = document.createElement('li');
-    listItem.innerHTML = '<img src="' + imageSrc + '" alt="' + imageName + '"> ' + imageName;
-
-    //append the list item to the favorites list
-
-    document.getElementById('Favorites').appendChild(listItem);
-
-
-// event listener for mouseenter effect    
-    listItem.addEventListener('mouseenter',
-    function() {
-        showRemoveButton(listItem);
-    });
-
-    listItem.addEventListener('mouseLeave',
-    function() {
-        hideRemoveButton(listItem);
-    });
-    favoriteList.appendChild(listItem);
-    saveToFavorites(newFavorite);
-}
-
-
-
-
-// saves to favorites
-function saveToFavorites(favorite) {
-   let favorites = localStorage.getItem('favoritesList') ?
-   JSON.parse(localStorage.getItem('favoritesList')) : [];
-   favorites.push(favorite);
-   localStorage.setItem('favoritesList', JSON.stringify(favorites));
-}
-
-
-
-
-// button icon gets event listener for click
-function showRemoveButton(item) {
-    var removeButton = document.createElement('button');
-    removeButton.textContent = '❤️';
-    removeButton.addEventListener('click',
-    function() {
-        removeFavorite(item);
-    });
-    item.appendChild(removeButton);
-}
-
-
-
-
-function hideRemoveButton(item) {
-    item.removeChild(item.lastChild);
-}
-
-
-// removes item from localStorage
-function removeFavorite(item) {
-    var favoriteList = document.getElementById('favoritesList');
-    var favorites = JSON.parse(localStorage.getItem('Favorites'));
-    var text = item.textContent;
-    var index = favorites.indexOf(text);
-    if (index > -1) {
-        favorites.splice(index, 1);
-        localStorage.setItem('favoritesList',
-        JSON.stringify(favorites));
-    }
-    favoriteList.removeChild(item);
-}
-
-
-
-
-// items stay when page is refreshed
-window.onload = function() {
-    let favorites = localStorage.getItem('favorites') ?
-    JSON.parse(localStorage.getItem('Favorites')) : [];
-    var favoriteList = document.getElementById('favoritesList');
-    favorites.forEach(function(favorite) {
-        var listItem = document.createElement('li');
-
-
-        listItem.appendChild(document.createTextNode(favorite));
-
-
-        listItem.addEventListener('mouseenter',
-        function() {
-            showRemoveButton(listItem);
-        });
-
-
-        listItem.addEventListener('mouseleave',
-        function() {
-            hideRemoveButton(listItem);
-        });
-
-
-        favoriteList.appendChild(listItem);
-
-
-    });
-
-
-};
-=======
-// ===Modal Box===
-document.addEventListener('DOMContentLoaded', () => {
-    // Functions to open and close a modal
-    function openModal($el) {
-      $el.classList.add('is-active');
-    }
-  
-    function closeModal($el) {
-      $el.classList.remove('is-active');
-    }
-  
-    // Add a click event on buttons to open a specific modal
-    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-      const modal = $trigger.dataset.target;
-      const $target = document.getElementById(modal);
-  
-      $trigger.addEventListener('click', () => {
-        openModal($target);
-      });
-    });
-  
-    // Add a click event on various child elements to close the parent modal
-    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-      const $target = $close.closest('.modal');
-  
-      $close.addEventListener('click', () => {
-        closeModal($target);
-      });
-    });
-  });
->>>>>>> 717a4951cf84eb0f49d89d35158c0ef70224d38e
+addToFavoritesButton.addEventListener("click", function() {
+  addToFavorites(result.subResultItem, result.ResultActImage);
+  console.log(addToFavorites);
+});
