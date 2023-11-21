@@ -2,15 +2,23 @@ var alcoholInputEl = document.querySelector('#alcoholInput');
 var nameSearchEl = document.querySelector('#nameSearch');
 var beerTitle = document.querySelector('#beerTitle');
 var beerImage = document.querySelector('#beerImage');
+beerImage.setAttribute("src", "assets/images/Default Bottle.png");
 var beerDescription = document.querySelector('#beerDescription');
 var randomSearchButton = document.querySelector('#randomSearchButton');
 var cocktailSearchResult = document.getElementById('cocktailResults');
 var searchResultSectionEl = document.getElementById("searchResultSection");
+var SearchResult = document.querySelector('#searchresult');
 
 
+
+
+function clearDivs() {
+    searchResultSectionEl.innerHTML = '';
+}
 
 document.querySelector('form.cocktailSearchInput').addEventListener('submit', function (e) {
     e.preventDefault();
+    clearDivs();
     runCocktailSearch();
 });   
 
@@ -116,8 +124,12 @@ function displayRepos (alcoholResponse) {
                 var cocktailName = document.createElement("a");
                 cocktailName.textContent = cocktailNameResult;
                 MediaContent.appendChild(cocktailName);
+
                 searchResultSection.appendChild(ResultItem);
             
+
+                searchResultSectionEl.appendChild(ResultItem);
+
             }
 
             addToFavoritesButton.addEventListener("click", function() {
@@ -209,6 +221,7 @@ function displayRepos (alcoholResponse) {
         }
     }
       
+
     function addToFavorites(imageThumbnailName, ResultActImage, cocktailNameResultname) {
 
         var listItem = document.createElement('li');
@@ -286,6 +299,26 @@ function displayRepos (alcoholResponse) {
             const listItem = document.createElement('li');
             listItem.textContent = ingredient;
             ingredientsList.appendChild(listItem);
+
+
+    var inputFavorite = document.querySelector('.inputFavorite');
+    var favBtn = document.getElementById('favoritesBtn');
+  
+    var savedFavorite = localStorage.getItem('savedFavorite');
+    if (savedFavorite) {
+      inputFavorite.value = savedFavorite;
+    }
+  
+    favBtn.addEventListener('click', function () {
+      var favoriteContent = inputFavorite.value;
+      localStorage.setItem('savedFavorite', favoriteContent);
+    });
+
+function runRandomSearchButton() {
+    fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
+        .then(results => results.json())
+        .then(apiData => {
+
         });
     
         contentDiv.appendChild(heading);
@@ -311,6 +344,65 @@ function displayRepos (alcoholResponse) {
 
 
 
+function displayRandomCocktail(apiData) {
+    const drink = apiData.drinks[0];
+    const drinkName = drink.strDrink;
+    const drinkIngredients = [];
+
+
+    const columnDiv = document.createElement('div');
+    columnDiv.classList.add('column', 'is-two-thirds');
+
+    const cardDiv = document.createElement('div');
+    cardDiv.classList.add('card');
+
+    const cardImageDiv = document.createElement('div');
+    cardImageDiv.classList.add('card-image');
+
+    const figureElement = document.createElement('figure');
+    figureElement.classList.add('image', 'is-4by3');
+
+    const drinkImage = document.createElement('img');
+    drinkImage.src = drink.strDrinkThumb;
+    drinkImage.alt = drinkName;
+
+    figureElement.appendChild(drinkImage);
+    cardImageDiv.appendChild(figureElement);
+
+    const cardContentDiv = document.createElement('div');
+    cardContentDiv.classList.add('card-content');
+
+    const contentDiv = document.createElement('div');
+    contentDiv.classList.add('content');
+
+    const heading = document.createElement('h3');
+    heading.textContent = drinkName;
+
+    const ingredientsList = document.createElement('ul');
+    drinkIngredients.forEach(ingredient => {
+        const listItem = document.createElement('li');
+        listItem.textContent = ingredient;
+        ingredientsList.appendChild(listItem);
+    });
+
+    contentDiv.appendChild(heading);
+    contentDiv.appendChild(ingredientsList);
+    cardContentDiv.appendChild(contentDiv);
+
+    cardDiv.appendChild(cardImageDiv);
+    cardDiv.appendChild(cardContentDiv);
+    columnDiv.appendChild(cardDiv);
+
+    searchResultSectionEl.appendChild(columnDiv);
+}
+
+randomSearchButton.addEventListener('click', function (event) {
+    event.preventDefault();
+    runRandomSearchButton();
+});
+
+
+
 function randomBeer(){
     var randomBeerUrl = "https://api.punkapi.com/v2/beers/random"
     fetch(randomBeerUrl)
@@ -319,9 +411,14 @@ function randomBeer(){
     })
     .then(function (data) {
           beerTitle.textContent = data[0].name;
-          beerImage.setAttribute("src", data[0].image_url);
           beerDescription.textContent = data[0].description;
+          if (data[0].image_url) {
+          beerImage.setAttribute("src", data[0].image_url);}
     });
 }
+
+randomBeer();  
+
+=======
 randomBeer();  
 
