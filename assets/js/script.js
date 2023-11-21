@@ -19,9 +19,8 @@ document.querySelector('form.cocktailSearchInput').addEventListener('submit', fu
     clearDivs();
     runCocktailSearch();
 });
-
-    
-
+ 
+// Search for Coctail
 function runCocktailSearch () { 
 var alcoholSearchParam = alcoholInputEl.value; 
 var alcoholURL = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=' + alcoholSearchParam; 
@@ -84,7 +83,7 @@ function displayRepos (alcoholResponse) {
             
           }}
         }
-
+//  Displaying of cocktail search result
     function finalDisplay (URLresponse) {
         if (URLresponse.length === 0) {
             searchResultSectionEl.textContent = "No results for alcohol type.";
@@ -178,6 +177,7 @@ function displayRepos (alcoholResponse) {
       localStorage.setItem('savedFavorite', favoriteContent);
     });
 
+// Random search for cocktail
 function runRandomSearchButton() {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/random.php`)
         .then(results => results.json())
@@ -185,7 +185,7 @@ function runRandomSearchButton() {
             displayRandomCocktail(apiData);
         });
 }
-
+//  Displaying of random cocktail 
 function displayRandomCocktail(apiData) {
     const drink = apiData.drinks[0];
     const drinkName = drink.strDrink;
@@ -244,7 +244,7 @@ randomSearchButton.addEventListener('click', function (event) {
 });
 
 
-
+// Displaying of random beer
 function randomBeer(){
     var randomBeerUrl = "https://api.punkapi.com/v2/beers/random"
     fetch(randomBeerUrl)

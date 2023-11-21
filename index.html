@@ -9,6 +9,7 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
   />
+  <!-- ===STYLE=== -->
   <style>
     :root {
     --backgroundColor: #BEE9E8;
@@ -125,11 +126,12 @@
 
     .inputFavorite {
     flex: 1;
-=}
+}
   </style>
 </head>
 
 <body class="backgroundColor box">
+  <!-- ===RANDOM BEER SECTION=== -->
   <div class="tile is-ancestor">
     <div class="randomBeer tile is-8 sectionColor stylesec">
       <div class="box fix-Content">
@@ -149,7 +151,7 @@
       </div>      
     </div>
 
-
+    <!-- ===LOGO=== -->
     <div class="title tile">
       <div class="box fix-Content title">
         <div id="logoContainer" style="padding: 10%;">
@@ -164,7 +166,7 @@
     </div>
   </div>
 
-
+<!-- ===COCTAIL SEARCH=== -->
   <div class="bottom tile is-ancestor">
     <div class="is-vertical tile is-4">
       <div class="cocktailSearch tile sectionColor stylesec">
@@ -193,13 +195,14 @@
             <br>
             <button type="submit" class="runSearch">Search for Cocktail</button>
           </form>
+          <!-- ===RANDOM SEARCH BUTTON=== -->
           <button type="submitRandom" class="randomSearch" id = "randomSearchButton">Random Search</button> 
-        </div> 
- 
+        </div>  
       </div>  
       <div class="Favorites tile sectionColor stylesec">
         <div class="box fix-Content">
-         <p class="sectionTitle">Favorites</p>
+          <!-- ===NOTES=== -->
+         <p class="sectionTitle">Notes</p>
          <textarea class="inputFavorite is-fullheight"> </textarea>
          <button class="btn saveBtn" aria-label="save" id="favoritesBtn"> Save
           </button>
@@ -210,44 +213,8 @@
       <p class="sectionTitle">Search Results</p>
       <section id="searchResultSection"></section>
     </div>
-    <!-- ===This button below is for checking how the modal box is working=== 
-  <button class="js-modal-trigger" data-target="modal-js-example">
-    Open JS example modal
-  </button> -->
-    </div>
   </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="./assets/js/script.js"></script>
-
-<!-- Modal -->
-<div id="modal-js-example" class="modal">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title">Title of Cocktail</p>
-      <button class="delete" aria-label="close"></button>
-    </header>
-    <section class="modal-card-body is-justify-content-space-between columns">
-      <div class="column is-3">
-        <img  id="coctailImage" src="" alt="Coctail Image"
-              style="height: 100px; width:100px; margin-right: 10px; float: left;">
-      </div>
-      <div class="modalTextBlock column is-9">
-        <div class="box is-12">
-          <p class="modalTitleText"> Description </p>
-          <p id="coctailDescription"> Lorem ipsum </p>
-        </div>
-        <div class="box is-12">
-          <p class="modalTitleText"> Recipe </p>
-          <p id="coctailRecipe"> Lorem ipsum </p>
-        </div>              
-      </div>          
-    </section>
-    <footer class="modal-card-foot">
-    <!-- “Add to Favorites” button -->
-    </footer>  
-  </div>
-</div>
-</div>
+    <script src="./assets/js/script.js"></script> 
 </body>
 </html>
